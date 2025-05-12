@@ -1,0 +1,67 @@
+/* ==========================================================================
+   accordion / components
+   Prenez le temps de regarder toutes les classes CSS et de les associer avec les éléments dans le HTML
+   ========================================================================== */
+
+.accordion {
+    display: grid;
+    color: var(--color-black);
+    gap: 20px;
+}
+
+.accordion__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .icon-close {
+        display: none;
+    }
+}
+
+.accordion__content {
+    display: none;
+
+    .is-active & {
+        display: block;
+    }
+}
+
+.accordion__container {
+    cursor: pointer;
+    background: var(--color-white);
+    border-radius: 4px;
+    color: var(--color-black);
+    padding: 20px;
+
+    h3 {
+        margin: 0;
+        font-weight: bold;
+        transition: 0.3s all $ease-out-quad;
+    }
+
+    .icon-open {
+        transition: 0.5s all $ease-out-quad;
+    }
+
+    &.is-active {
+        &:hover h3 {
+            transform: translate3d(0, 0, 0);
+        }
+        .icon-open {
+            display: none;
+        }
+        .icon-close {
+            display: block;
+        }
+    }
+
+    &:hover {
+        h3 {
+            transform: translate3d(20px, 0, 0);
+        }
+        .icon-open {
+            transform: rotate(180deg);
+        }
+    }
+}
